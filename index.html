@@ -43,7 +43,7 @@
     .iframe-container {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 aspect ratio */
+      padding-top: 56.25%; 
       margin: 20px 0;
     }
     iframe {
@@ -178,11 +178,11 @@
       const gameFrame = document.getElementById('game-frame');
       if (gameFrame.requestFullscreen) {
         gameFrame.requestFullscreen();
-      } else if (gameFrame.mozRequestFullScreen) { // Firefox
+      } else if (gameFrame.mozRequestFullScreen) { 
         gameFrame.mozRequestFullScreen();
-      } else if (gameFrame.webkitRequestFullscreen) { // Chrome, Safari, Opera
+      } else if (gameFrame.webkitRequestFullscreen) { 
         gameFrame.webkitRequestFullscreen();
-      } else if (gameFrame.msRequestFullscreen) { // IE/Edge
+      } else if (gameFrame.msRequestFullscreen) { 
         gameFrame.msRequestFullscreen();
       }
     }
