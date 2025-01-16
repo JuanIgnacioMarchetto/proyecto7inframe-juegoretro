@@ -40,13 +40,35 @@
       transform: scale(1.1);
       background-color: #555;
     }
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 aspect ratio */
+      margin: 20px 0;
+    }
     iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border: none;
-      width: 90%;
-      height: 600px;
-      margin: 20px auto;
-      display: block;
       border-radius: 8px;
+    }
+    .fullscreen-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.2s;
+    }
+    .fullscreen-button:hover {
+      background-color: #555;
     }
     footer {
       margin-top: 20px;
@@ -63,10 +85,7 @@
   <header>
     <h1>Plataforma de Juegos Retro</h1>
   </header>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Sonic_the_Hedgehog_1991')">
-  <p>Sonic the Hedgehog (1991)</p>
-</div>
-  
+
   <div class="game-list">
     <div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Pac-Man_1983')">
       <p>Pac-Man (1983)</p>
@@ -77,80 +96,58 @@
     <div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Tetris_1986')">
       <p>Tetris (1986)</p>
     </div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Sonic_the_Hedgehog_1991')">
-  <p>Sonic the Hedgehog (1991)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Prince_of_Persia_1990')">
-  <p>Prince of Persia (1990)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Doom_1993')">
-  <p>DOOM (1993)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Wolfenstein_3D_1992')">
-  <p>Wolfenstein 3D (1992)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Commander_Keen_4_1991')">
-  <p>Commander Keen 4 (1991)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Street_Fighter_2_1992')">
-  <p>Street Fighter II (1992)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_The_Legend_of_Zelda_1993')">
-  <p>The Legend of Zelda (1993)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Leisure_Suit_Larry_1987')">
-  <p>Leisure Suit Larry (1987)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Aladdin_1994')">
-  <p>Aladdin (1994)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Duke_Nukem_3D_1996')">
-  <p>Duke Nukem 3D (1996)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_SimCity_2000_1993')">
-  <p>SimCity 2000 (1993)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Lemmings_1991')">
-  <p>Lemmings (1991)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Mortal_Kombat_1993')">
-  <p>Mortal Kombat (1993)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Pac-Man_1983')">
-  <p>Pac-Man (1983)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Tetris_1986')">
-  <p>Tetris (1986)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Super_Mario_Bros_1994')">
-  <p>Super Mario Bros (1994)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Bomberman_1992')">
-  <p>Bomberman (1992)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Quake_1996')">
-  <p>Quake (1996)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Pitfall_1982')">
-  <p>Pitfall! (1982)</p>
-</div>
-<div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Castle_Wolfenstein_1981')">
-  <p>Castle Wolfenstein (1981)</p>
-</div>
-
+    <div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Sonic_the_Hedgehog_1991')">
+      <p>Sonic the Hedgehog (1991)</p>
+    </div>
+    <div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Prince_of_Persia_1990')">
+      <p>Prince of Persia (1990)</p>
+    </div>
+    <div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Doom_1993')">
+      <p>DOOM (1993)</p>
+    </div>
+    <div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Wolfenstein_3D_1992')">
+      <p>Wolfenstein 3D (1992)</p>
+    </div>
+    <div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Street_Fighter_2_1992')">
+      <p>Street Fighter II (1992)</p>
+    </div>
+    <div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_The_Legend_of_Zelda_1993')">
+      <p>The Legend of Zelda (1993)</p>
+    </div>
+    <div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Aladdin_1994')">
+      <p>Aladdin (1994)</p>
+    </div>
+    <div class="game-item" onclick="loadGame('https://archive.org/embed/msdos_Duke_Nukem_3D_1996')">
+      <p>Duke Nukem 3D (1996)</p>
+    </div>
   </div>
 
-  <iframe id="game-frame" src="" allowfullscreen></iframe>
+  <div class="iframe-container">
+    <iframe id="game-frame" src="" allowfullscreen></iframe>
+  </div>
+  <button class="fullscreen-button" onclick="toggleFullscreen()">Agrandar Pantalla</button>
 
   <footer>
     <p>&copy; 2025 Plataforma de Juegos Retro. Todos los derechos reservados.</p>
   </footer>
 
   <script>
-    //gargar el juego por inframe
     function loadGame(url) {
       const gameFrame = document.getElementById('game-frame');
       gameFrame.src = url;
+    }
+
+    function toggleFullscreen() {
+      const gameFrame = document.getElementById('game-frame');
+      if (gameFrame.requestFullscreen) {
+        gameFrame.requestFullscreen();
+      } else if (gameFrame.mozRequestFullScreen) { // Firefox
+        gameFrame.mozRequestFullScreen();
+      } else if (gameFrame.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        gameFrame.webkitRequestFullscreen();
+      } else if (gameFrame.msRequestFullscreen) { // IE/Edge
+        gameFrame.msRequestFullscreen();
+      }
     }
   </script>
 </body>
